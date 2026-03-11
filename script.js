@@ -3,6 +3,113 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Hero canvas animation: floating carpet fiber particles ---
+  const canvas = document.getElementById('heroCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId;
+
+    function resizeCanvas() {
+      const hero = canvas.parentElement;
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+
+    function createParticles() {
+      particles = [];
+      const count = Math.floor((canvas.width * canvas.height) / 18000);
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2.5 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.2 - 0.1,
+          opacity: Math.random() * 0.15 + 0.05,
+          hue: Math.random() > 0.5 ? '200,149,108' : '168,101,74',
+          // Gentle oscillation
+          phase: Math.random() * Math.PI * 2,
+          amplitude: Math.random() * 0.5 + 0.2
+        });
+      }
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const time = Date.now() * 0.001;
+
+      particles.forEach(p => {
+        // Gentle floating motion
+        p.x += p.speedX + Math.sin(time + p.phase) * p.amplitude * 0.1;
+        p.y += p.speedY + Math.cos(time * 0.7 + p.phase) * p.amplitude * 0.05;
+
+        // Wrap around
+        if (p.x < -10) p.x = canvas.width + 10;
+        if (p.x > canvas.width + 10) p.x = -10;
+        if (p.y < -10) p.y = canvas.height + 10;
+        if (p.y > canvas.height + 10) p.y = -10;
+
+        // Draw as soft glowing dot (like tiny carpet fibers)
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.hue}, ${p.opacity})`;
+        ctx.fill();
+
+        // Add soft glow
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.hue}, ${p.opacity * 0.2})`;
+        ctx.fill();
+      });
+
+      // Draw faint connecting lines between nearby particles for a woven texture feel
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 100) {
+            const lineOpacity = (1 - dist / 100) * 0.04;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(200, 149, 108, ${lineOpacity})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      animationId = requestAnimationFrame(drawParticles);
+    }
+
+    resizeCanvas();
+    createParticles();
+    drawParticles();
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createParticles();
+    });
+
+    // Pause animation when hero is not visible
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (!animationId) drawParticles();
+        } else {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
+      });
+    }, { threshold: 0 });
+
+    heroObserver.observe(canvas.parentElement);
+  }
+
   // --- Navbar scroll effect ---
   const navbar = document.getElementById('navbar');
 
@@ -129,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
       zIndex: '9999',
       animation: 'fadeInUp 0.3s ease',
       maxWidth: '400px',
-      background: type === 'success' ? '#16a34a' : '#dc2626',
+      background: type === 'success' ? '#6aaa64' : '#c25a5a',
       color: '#fff',
       boxShadow: '0 8px 32px rgba(0,0,0,0.4)'
     });
