@@ -3,111 +3,32 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Hero canvas animation: floating carpet fiber particles ---
-  const canvas = document.getElementById('heroCanvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let animationId;
-
-    function resizeCanvas() {
-      const hero = canvas.parentElement;
-      canvas.width = hero.offsetWidth;
-      canvas.height = hero.offsetHeight;
+  // --- Warm floating particles in hero ---
+  const particleContainer = document.getElementById('heroParticles');
+  if (particleContainer) {
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'hero-particle';
+      const size = Math.random() * 4 + 2;
+      const left = Math.random() * 100;
+      const duration = Math.random() * 8 + 6;
+      const delay = Math.random() * 5;
+      particle.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${left}%;
+        bottom: -10px;
+        animation-duration: ${duration}s;
+        animation-delay: ${delay}s;
+        opacity: 0;
+      `;
+      particleContainer.appendChild(particle);
     }
 
-    function createParticles() {
-      particles = [];
-      const count = Math.floor((canvas.width * canvas.height) / 18000);
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 2.5 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.3,
-          speedY: (Math.random() - 0.5) * 0.2 - 0.1,
-          opacity: Math.random() * 0.15 + 0.05,
-          hue: Math.random() > 0.5 ? '200,149,108' : '168,101,74',
-          // Gentle oscillation
-          phase: Math.random() * Math.PI * 2,
-          amplitude: Math.random() * 0.5 + 0.2
-        });
-      }
+    // Create initial batch of particles
+    for (let i = 0; i < 30; i++) {
+      createParticle();
     }
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const time = Date.now() * 0.001;
-
-      particles.forEach(p => {
-        // Gentle floating motion
-        p.x += p.speedX + Math.sin(time + p.phase) * p.amplitude * 0.1;
-        p.y += p.speedY + Math.cos(time * 0.7 + p.phase) * p.amplitude * 0.05;
-
-        // Wrap around
-        if (p.x < -10) p.x = canvas.width + 10;
-        if (p.x > canvas.width + 10) p.x = -10;
-        if (p.y < -10) p.y = canvas.height + 10;
-        if (p.y > canvas.height + 10) p.y = -10;
-
-        // Draw as soft glowing dot (like tiny carpet fibers)
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.hue}, ${p.opacity})`;
-        ctx.fill();
-
-        // Add soft glow
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.hue}, ${p.opacity * 0.2})`;
-        ctx.fill();
-      });
-
-      // Draw faint connecting lines between nearby particles for a woven texture feel
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 100) {
-            const lineOpacity = (1 - dist / 100) * 0.04;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(200, 149, 108, ${lineOpacity})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-
-      animationId = requestAnimationFrame(drawParticles);
-    }
-
-    resizeCanvas();
-    createParticles();
-    drawParticles();
-
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      createParticles();
-    });
-
-    // Pause animation when hero is not visible
-    const heroObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (!animationId) drawParticles();
-        } else {
-          cancelAnimationFrame(animationId);
-          animationId = null;
-        }
-      });
-    }, { threshold: 0 });
-
-    heroObserver.observe(canvas.parentElement);
   }
 
   // --- Navbar scroll effect ---
@@ -130,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.classList.toggle('active');
   });
 
-  // Close mobile nav when a link is clicked
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
@@ -153,9 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
-  // Observe elements for scroll animation
   const animateElements = document.querySelectorAll(
-    '.service-card, .process-step, .testimonial-card, .feature-item, .about-image-placeholder, .about-stat-card, .cta-content, .contact-form-wrapper, .contact-info'
+    '.service-card, .process-step, .testimonial-card, .feature-item, .about-image, .about-stat-card, .cta-content, .contact-form-wrapper, .contact-info, .result-card, .hero-form-wrapper'
   );
 
   animateElements.forEach(el => {
@@ -186,6 +105,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --- Hero form handling ---
+  const heroForm = document.getElementById('heroForm');
+  if (heroForm) {
+    heroForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = heroForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        heroForm.reset();
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        showNotification('Thank you! We\'ll call you within 15 minutes.', 'success');
+      }, 1500);
+    });
+  }
+
   // --- Contact form handling ---
   const contactForm = document.getElementById('contactForm');
 
@@ -195,13 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(contactForm);
     const data = Object.fromEntries(formData.entries());
 
-    // Validate required fields
     if (!data.firstName || !data.lastName || !data.email || !data.service) {
       showNotification('Please fill in all required fields.', 'error');
       return;
     }
 
-    // Simulate form submission
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Sending...';
@@ -217,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Notification system ---
   function showNotification(message, type) {
-    // Remove existing notification
     const existing = document.querySelector('.notification');
     if (existing) existing.remove();
 
@@ -236,9 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
       zIndex: '9999',
       animation: 'fadeInUp 0.3s ease',
       maxWidth: '400px',
-      background: type === 'success' ? '#6aaa64' : '#c25a5a',
+      background: type === 'success' ? '#4caf50' : '#e53935',
       color: '#fff',
-      boxShadow: '0 8px 32px rgba(0,0,0,0.4)'
+      boxShadow: '0 8px 32px rgba(0,0,0,0.3)'
     });
 
     document.body.appendChild(notification);

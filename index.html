@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Navigation -->
@@ -26,54 +26,71 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#process">Process</a></li>
+        <li><a href="#results">Results</a></li>
         <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#contact" class="btn btn-primary btn-sm">Get a Quote</a></li>
+        <li><a href="#contact" class="btn btn-primary btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Get a Quote
+        </a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-shimmer"></div>
-    <div class="hero-fibers"></div>
-    <!-- Floating carpet motif shapes -->
-    <div class="hero-motif hero-motif-1"></div>
-    <div class="hero-motif hero-motif-2"></div>
-    <div class="hero-motif hero-motif-3"></div>
-    <div class="hero-motif hero-motif-4"></div>
-    <div class="hero-motif hero-motif-5"></div>
-    <div class="hero-motif hero-motif-6"></div>
-    <canvas id="heroCanvas"></canvas>
-    <div class="container hero-content">
-      <div class="hero-badge">Trusted by 5,000+ Happy Customers</div>
-      <h1>Professional Carpet Cleaning That <span class="text-gradient">Transforms</span> Your Home</h1>
-      <p class="hero-subtitle">Deep cleaning technology that removes 99.9% of dirt, allergens, and bacteria. Your carpets will look and feel brand new.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary btn-lg">Get Free Estimate</a>
-        <a href="#services" class="btn btn-outline btn-lg">Our Services</a>
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1920&q=80&auto=format" alt="Beautiful living room with clean carpet" class="hero-bg-img">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Same-day slots available
+        </div>
+        <h1>Professional Carpet Cleaning That <span class="text-gradient">Transforms</span> Your Home</h1>
+        <p class="hero-subtitle">Deep cleaning that eliminates stains, odors &amp; allergens. Fresh carpets by tonight.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary btn-lg">Get a Free Quote</a>
+          <a href="tel:+15551234567" class="btn btn-outline btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now
+          </a>
+        </div>
+        <div class="hero-trust-badges">
+          <div class="trust-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            5,000+ 5-Star Reviews
+          </div>
+          <div class="trust-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            15+ Years in Business
+          </div>
+          <div class="trust-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Same-Day Service
+          </div>
+          <div class="trust-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            100% Satisfaction Guaranteed
+          </div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number">5,000+</span>
-          <span class="stat-label">Homes Cleaned</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number">4.9/5</span>
-          <span class="stat-label">Customer Rating</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number">15+</span>
-          <span class="stat-label">Years Experience</span>
-        </div>
+      <div class="hero-form-wrapper">
+        <form class="hero-form" id="heroForm">
+          <h3>Get Your Free Quote</h3>
+          <input type="text" placeholder="Your Name" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <input type="text" placeholder="Zip Code" required>
+          <button type="submit" class="btn btn-primary btn-lg btn-full">Get My Free Quote &rarr;</button>
+          <p class="form-disclaimer">No spam. We'll call you within 15 minutes.</p>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
+  <!-- Services Section - LIGHT -->
   <section class="services" id="services">
     <div class="container">
       <div class="section-header">
@@ -84,65 +101,52 @@
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="4"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="4"/></svg>
           </div>
           <h3>Deep Steam Cleaning</h3>
-          <p>Hot water extraction that penetrates deep into carpet fibers, removing embedded dirt and allergens.</p>
-          <span class="service-price">From $99</span>
+          <p>Eliminates 99% of allergens and bacteria trapped in your carpet fibers</p>
+          <a href="#contact" class="service-link">Book Now &rarr;</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"/><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L11 5l-3-4"/><path d="M17 22V2"/><path d="m22 2-5 5"/></svg>
+          </div>
+          <h3>Pet Odor &amp; Stain Treatment</h3>
+          <p>Guaranteed odor removal, even from old, set-in stains</p>
+          <a href="#contact" class="service-link">Book Now &rarr;</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Stain Protection Coating</h3>
+          <p>Keeps your carpets cleaner 3x longer after our treatment</p>
+          <a href="#contact" class="service-link">Book Now &rarr;</a>
         </div>
         <div class="service-card featured">
           <div class="featured-badge">Most Popular</div>
           <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6l3-3"/><path d="M12 8l-3-3"/><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"/><path d="M12 22v-6"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
-          <h3>Stain Removal</h3>
-          <p>Specialized treatment for tough stains including wine, coffee, pet stains, and more. Guaranteed results.</p>
-          <span class="service-price">From $149</span>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
-          </div>
-          <h3>Upholstery Cleaning</h3>
-          <p>Revitalize your furniture with our gentle yet effective upholstery cleaning process.</p>
-          <span class="service-price">From $129</span>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/><path d="M12 7v5l3 3"/></svg>
-          </div>
-          <h3>Express Dry Cleaning</h3>
-          <p>Low-moisture cleaning that dries in under 2 hours. Perfect for busy homes and offices.</p>
-          <span class="service-price">From $89</span>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"/><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L11 5l-3-4"/><path d="M17 22V2"/><path d="m22 2-5 5"/></svg>
-          </div>
-          <h3>Pet Odor Treatment</h3>
-          <p>Enzyme-based treatment that eliminates pet odors at the molecular level. Not just a cover-up.</p>
-          <span class="service-price">From $119</span>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
-          </div>
-          <h3>Area Rug Cleaning</h3>
-          <p>Specialized care for delicate area rugs including Oriental, Persian, and handmade rugs.</p>
-          <span class="service-price">From $79</span>
+          <h3>Move-In / Move-Out Cleaning</h3>
+          <p>Get your full deposit back with landlord-approved cleaning</p>
+          <a href="#contact" class="service-link">Book Now &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About / Why Choose Us -->
+  <!-- About / Why Choose Us - DARK -->
   <section class="about" id="about">
     <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why Choose Us</span>
+        <h2>We Know What You're Dealing With</h2>
+        <p>With over 15 years of experience, SparkClean has been the trusted name in carpet care.</p>
+      </div>
       <div class="about-grid">
         <div class="about-content">
-          <span class="section-tag">Why Choose Us</span>
-          <h2>Cleaning Carpets Is More Than Just Our Job &mdash; It's Our Passion</h2>
-          <p>With over 15 years of experience, SparkClean has been the trusted name in carpet care. We use eco-friendly, child-safe, and pet-safe products combined with state-of-the-art equipment.</p>
+          <p class="about-text">We use eco-friendly, child-safe, and pet-safe products combined with state-of-the-art equipment. Our certified technicians treat every home like their own.</p>
           <div class="features-list">
             <div class="feature-item">
               <div class="feature-check">&#10003;</div>
@@ -175,22 +179,58 @@
           </div>
         </div>
         <div class="about-visual">
-          <div class="about-image-placeholder">
-            <div class="placeholder-content">
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-              <span>Professional Equipment</span>
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80&auto=format" alt="Professional carpet cleaning technician at work">
+            <div class="about-stat-card">
+              <span class="about-stat-number">99.9%</span>
+              <span class="about-stat-text">Bacteria &amp; Allergens Removed</span>
             </div>
-          </div>
-          <div class="about-stat-card">
-            <span class="about-stat-number">99.9%</span>
-            <span class="about-stat-text">Bacteria & Allergens Removed</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Process Section -->
+  <!-- Before & After Results - LIGHT -->
+  <section class="results" id="results">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Real Results</span>
+        <h2>See The Difference</h2>
+        <p>Real before &amp; after photos from actual customer homes.</p>
+      </div>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-images">
+            <div class="result-img">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&q=80&auto=format" alt="Carpet before cleaning">
+              <span class="result-label label-before">Before</span>
+            </div>
+            <div class="result-img">
+              <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&q=80&auto=format" alt="Carpet after cleaning">
+              <span class="result-label label-after">After</span>
+            </div>
+          </div>
+          <p class="result-caption">Living room carpet &mdash; Deep steam cleaning removed years of embedded dirt</p>
+        </div>
+        <div class="result-card">
+          <div class="result-images">
+            <div class="result-img">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&q=80&auto=format" alt="Stained rug before treatment">
+              <span class="result-label label-before">Before</span>
+            </div>
+            <div class="result-img">
+              <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=500&q=80&auto=format" alt="Clean rug after treatment">
+              <span class="result-label label-after">After</span>
+            </div>
+          </div>
+          <p class="result-caption">Area rug &mdash; Pet stain and odor completely eliminated</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section - DARK -->
   <section class="process" id="process">
     <div class="container">
       <div class="section-header">
@@ -226,67 +266,62 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <!-- Testimonials Section - DARK -->
   <section class="testimonials" id="testimonials">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Testimonials</span>
-        <h2>What Our Customers Say</h2>
-        <p>Don't just take our word for it &mdash; hear from our satisfied customers.</p>
+        <h2>Don't Take Our Word For It</h2>
+        <p>Real reviews from real customers in your area.</p>
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card">
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"SparkClean completely transformed our living room carpet. The stains from our kids and dogs are completely gone. It looks brand new!"</p>
+          <p>"They got out a 3-year-old coffee stain I'd given up on. My carpets look brand new!"</p>
           <div class="testimonial-author">
-            <div class="author-avatar">SM</div>
-            <div>
-              <strong>Sarah M.</strong>
-              <span>Homeowner</span>
-            </div>
+            <strong>&mdash; Sarah M.</strong>
+            <span class="verified-badge">Verified Google Review</span>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"We use SparkClean for our office building monthly. Their team is professional, punctual, and the results are always outstanding."</p>
+          <p>"On time, professional, and my house smelled amazing after. Already booked for my rental too."</p>
           <div class="testimonial-author">
-            <div class="author-avatar">JR</div>
-            <div>
-              <strong>James R.</strong>
-              <span>Office Manager</span>
-            </div>
+            <strong>&mdash; James R.</strong>
+            <span class="verified-badge">Verified Google Review</span>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"I was skeptical about the pet odor treatment, but wow! My house smells amazing now. Absolutely worth every penny. Highly recommend!"</p>
+          <p>"Used them for move-out cleaning and got my full deposit back. Fast and affordable."</p>
           <div class="testimonial-author">
-            <div class="author-avatar">LP</div>
-            <div>
-              <strong>Lisa P.</strong>
-              <span>Pet Owner</span>
-            </div>
+            <strong>&mdash; Michelle T.</strong>
+            <span class="verified-badge">Verified Google Review</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- CTA Section with background image -->
   <section class="cta">
+    <div class="cta-bg">
+      <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1920&q=80&auto=format" alt="Clean carpeted room" class="cta-bg-img">
+      <div class="cta-overlay"></div>
+    </div>
     <div class="container">
       <div class="cta-content">
         <h2>Ready for Cleaner, Fresher Carpets?</h2>
         <p>Book your appointment today and get 20% off your first cleaning. Limited time offer!</p>
         <div class="cta-actions">
           <a href="#contact" class="btn btn-primary btn-lg">Book Now &mdash; 20% Off</a>
-          <a href="tel:+15551234567" class="btn btn-outline btn-lg">Call (555) 123-4567</a>
+          <a href="tel:+15551234567" class="btn btn-outline-light btn-lg">Call (555) 123-4567</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact Section - LIGHT -->
   <section class="contact" id="contact">
     <div class="container">
       <div class="contact-grid">
@@ -338,10 +373,9 @@
               <select id="service" name="service" required>
                 <option value="" disabled selected>Select a service</option>
                 <option value="deep-steam">Deep Steam Cleaning</option>
-                <option value="stain-removal">Stain Removal</option>
-                <option value="upholstery">Upholstery Cleaning</option>
-                <option value="express-dry">Express Dry Cleaning</option>
-                <option value="pet-odor">Pet Odor Treatment</option>
+                <option value="stain-removal">Pet Odor & Stain Treatment</option>
+                <option value="stain-protection">Stain Protection Coating</option>
+                <option value="move-in-out">Move-In / Move-Out Cleaning</option>
                 <option value="area-rug">Area Rug Cleaning</option>
               </select>
             </div>
